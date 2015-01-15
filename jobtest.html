@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+
+<title>Contact List</title>
+</head>
+
+<body ng-app="ContactList">
+	<div ng-controller="AddContact" class="container">
+    	<div class="row">
+        	<h3 class="page-header">Contact List</h3>
+            <button ng-click="openContactForm();" class="btn-info btn-sm">Add Contact</button>
+            <br /><br />
+    		<table class="table-bordered table table-striped">
+            	<tr>
+                	<th>Date Added</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+                <tr ng-repeat="person in Contacts">
+                	<td>{{person.dateadded}}</td>
+                    <td>{{person.name}}</td>
+                    <td>{{person.email}}</td>
+                </tr>
+            </table>
+        </div>
+        <script  type="text/ng-template" id="addContact.html">
+			<style type="text/css">
+  				.validate-form input.ng-invalid.ng-touched {
+    				background-color: #FA787E;
+  				}
+
+  				.validate-form input.ng-valid.ng-touched {
+    				background-color: #78FA89;
+  				}
+			</style>
+			<h4 class="page-header">&nbsp;Add Contact</h4>
+			<div class="row">				
+				<div class="col-sm-1">&nbsp;</div>
+				<div class="col-sm-3">
+        			<form ng-submit="ok()" class="validate-form">
+        	    		<label for="pName">Name</label><br />
+        	    		<input type="text" id="pName" ng-model="input.name" class="input-sm" required ng-required="true" /><br /><br />
+        				<label for="pEmail">Email Address</label><br />
+            			<input type="email" id="pEmail" ng-model="input.email" class="input-sm" required ng-required="true" /><br /><br />
+						<input type="submit" value="Add" class="btn btn-primary" />
+						<button class="btn btn-warning" ng-click="cancel();" >Cancel</button>
+					</form>
+					<br />
+				</div>
+			</div>
+		</script>
+    </div>
+<script src="js/angular.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/contactlist.js"></script>
+</body>
+</html>
